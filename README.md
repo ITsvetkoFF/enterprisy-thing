@@ -73,5 +73,14 @@ Wrap router-outlet to support name binding
 Add dynamic loading of routes to dashboard router config  
 Keep in mind that it is easy to mess up modules!  
 
+#### step 6
+Let's add this https://bl.ocks.org/mbostock/ad70335eeef6d167bc36fd3c04378048 to chart widget  
+`npm install --save d3`  
+`npm install --save-dev @types/d3`  
+this https://medium.com/netscape/visualizing-data-with-angular-and-d3-209dde784aeb is the nice way, but we have canvas and no time!  
 
-   
+Plan:  
+1. copy everything to ngAfterViewInit
+2. correctly get reference to canvas from widget
+3. change data to be local exported from some ts file.
+
