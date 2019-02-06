@@ -84,3 +84,6 @@ Plan:
 2. correctly get reference to canvas from widget
 3. change data to be local exported from some ts file.
 
+#### step 7 
+Add widget number and explore ViewEncapsulation closer  
+Do whatever you vant in a styles of this widget

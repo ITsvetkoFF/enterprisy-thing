@@ -19,6 +19,17 @@ const routes: Routes = [{
         },
       ],
     },
+    {
+      path: 'widget-number',
+      outlet: 'w2',
+      component: ProxyRouteComponent,
+      children: [
+        {
+          path: '',
+          loadChildren: './widget-number/widget-number.module#WidgetNumberModule',
+        },
+      ],
+    }
   ]
 }];
 
