@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {WidgetChartComponent} from './widget-chart/widget-chart.component';
+import { ProxyRouteComponent } from './proxy-route.component';
 
 const routes: Routes = [{
   path: 'dashboard', // DO NOT PUT SLASH AFTER!!
@@ -11,7 +11,13 @@ const routes: Routes = [{
     {
       path: 'widget-chart',
       outlet: 'w5',
-      component: WidgetChartComponent
+      component: ProxyRouteComponent, // https://github.com/angular/angular/issues/12842#issuecomment-270836368
+      children: [
+        {
+          path: '',
+          loadChildren: './widget-chart/widget-chart.module#WidgetChartModule',
+        },
+      ],
     },
   ]
 }];

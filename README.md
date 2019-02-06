@@ -12,13 +12,13 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 `ng new enterprisy-thing --routing`
 
 #### step 2 
-`ng generate m dashboards --routing` 
-`cd src/app/dashboards`
-`ng g component dashboard -v=ShadowDom`
-`ng g component widget-number -v=ShadowDom`
-`ng g component widget-chart -v=ShadowDom`
-`ng add @angular/cdk`
-add this to dashboard routing module
+`ng generate m dashboards --routing`   
+`cd src/app/dashboards`  
+`ng g component dashboard -v=ShadowDom`  
+`ng g component widget-number -v=ShadowDom`  
+`ng g component widget-chart -v=ShadowDom`  
+`ng add @angular/cdk`  
+add this to dashboard routing module  
 ```import { DashboardComponent } from './dashboard/dashboard.component';
  
  const routes: Routes = [{
@@ -26,7 +26,7 @@ add this to dashboard routing module
    component: DashboardComponent
  }];
  ```
-add this to app routing module
+add this to app routing module  
 ```
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -45,13 +45,25 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
  ```
- add DashboardsModule to AppModule
- clean up app.component.html
+ add DashboardsModule to AppModule  
+ clean up app.component.html  
  
  #### step 3
- Add some styles
- add named router-outlet to dashboards.
- Apply Dragdrop (add module and add directive)
+ Add some styles  
+ add named router-outlet to dashboards.  
+ Apply Dragdrop (add module and add directive)  
  
+ #### step 4
+ To lazy load widgets we need them to be in separate modules.  
+ from dashboards folder: `ng generate m widget-chart --routing`  
+ add `WidgetChart` component to module and add one simple route to this module  
+ do the same for widget-number  
+ define bug with lazy loading in outlets: https://github.com/angular/angular/issues/12842#issuecomment-270836368 fix it by adding new component  
+ Add this component to ng Module  
+   
+ lazy loading: `Type WidgetChartComponent is part of the declarations of 2 modules: DashboardsModule and WidgetChartModule! `  
+ Just removing it from parent declarations  
+  
+ holy crap! undefined is not a function. Fight it and enjoy.  
+  
