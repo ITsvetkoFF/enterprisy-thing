@@ -1,3 +1,11 @@
 <p>
-  dashboard works!
+  dashboard works! <a [routerLink]="[{ outlets: { w5: ['widget-chart'] } }]">Add chart Widget to slot5</a>
 </p>
+
+<div class="widgets">
+  <div class="widget-placeholder" *ngFor="let widget of widgets" cdkDrag>
+  </div>
+  <div class="widget-placeholder" cdkDrag>
+    <router-outlet name="w5"></router-outlet>
+  </div>
+</div>

@@ -10,6 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 #### step 1 
 `ng new enterprisy-thing --routing`
+
 #### step 2 
 `ng generate m dashboards --routing` 
 `cd src/app/dashboards`
@@ -48,4 +49,9 @@ export class AppRoutingModule { }
  ```
  add DashboardsModule to AppModule
  clean up app.component.html
+ 
+ #### step 3
+ Add some styles
+ add named router-outlet to dashboards.
+ Apply Dragdrop (add module and add directive)
  
