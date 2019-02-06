@@ -1,11 +1,13 @@
 <p>
-  dashboard works! <a [routerLink]="[{ outlets: { w5: ['widget-chart'] } }]">Add chart Widget to slot5</a>
+  dashboard works!
+  <a [routerLink]="[{ outlets: { w5: ['widget-chart'] } }]">Add chart Widget to slot5</a> &nbsp;
+  <button (click)="loadNumberRoute()">load number Widget to routing config</button> &nbsp;
+  <a [routerLink]="[{ outlets: { w2: ['widget-number'] } }]">Add chart Widget to slot2</a>
 </p>
 
 <div class="widgets">
   <div class="widget-placeholder" *ngFor="let widget of widgets" cdkDrag>
-  </div>
-  <div class="widget-placeholder" cdkDrag>
-    <router-outlet name="w5"></router-outlet>
+    <!-- <router-outlet name="w1"></router-outlet> -->
+    <app-named-outlet [name]="widget.name"></app-named-outlet>
   </div>
 </div>

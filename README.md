@@ -66,4 +66,12 @@ export class AppRoutingModule { }
  Just removing it from parent declarations  
   
  holy crap! undefined is not a function. Fight it and enjoy.  
-  
+ 
+ 
+ #### step 5
+Wrap router-outlet to support name binding  
+Add dynamic loading of routes to dashboard router config  
+Keep in mind that it is easy to mess up modules!  
+
+
+   
