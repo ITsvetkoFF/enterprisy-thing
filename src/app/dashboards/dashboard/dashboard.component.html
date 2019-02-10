@@ -7,6 +7,7 @@
 
 <div class="widgets">
   <div class="widget-placeholder" *ngFor="let widget of widgets" cdkDrag>
+    <h3>Some header</h3>
     <!-- <router-outlet name="w1"></router-outlet> -->
     <app-named-outlet [name]="widget.name"></app-named-outlet>
   </div>
