@@ -1,5 +1,8 @@
 import {AfterViewInit, Component, ViewChild, ViewEncapsulation} from '@angular/core';
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
+import { forceSimulation, forceLink, forceCenter, forceManyBody} from 'd3-force';
+import { select, event } from 'd3-selection';
+import { drag } from 'd3-drag';
 
 import { data as graph } from "./data/miserables"
 
@@ -25,12 +28,12 @@ export class WidgetChartComponent implements AfterViewInit {
     let width = canvas.width;
     let height = canvas.height;
 
-    let simulation = d3.forceSimulation()
-      .force('link', d3.forceLink().id(function (d: any) {
+    let simulation = forceSimulation()
+      .force('link', forceLink().id(function (d: any) {
         return d.id;
       }))
-      .force('charge', d3.forceManyBody())
-      .force('center', d3.forceCenter(width / 2, height / 2));
+      .force('charge', forceManyBody())
+      .force('center', forceCenter(width / 2, height / 2));
 
       simulation
         .nodes(graph.nodes)
@@ -38,8 +41,8 @@ export class WidgetChartComponent implements AfterViewInit {
 
     (simulation.force('link') as any).links(graph.links);
 
-      d3.select(canvas)
-        .call(d3.drag()
+      select(canvas)
+        .call(drag()
           .container(canvas)
           .subject(dragsubject)
           .on('start', dragstarted)
@@ -62,24 +65,24 @@ export class WidgetChartComponent implements AfterViewInit {
       }
 
       function dragsubject() {
-        return simulation.find(d3.event.x, d3.event.y);
+        return simulation.find(event.x, event.y);
       }
 
     function dragstarted() {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-      d3.event.subject.fx = d3.event.subject.x;
-      d3.event.subject.fy = d3.event.subject.y;
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      event.subject.fx = event.subject.x;
+      event.subject.fy = event.subject.y;
     }
 
     function dragged() {
-      d3.event.subject.fx = d3.event.x;
-      d3.event.subject.fy = d3.event.y;
+      event.subject.fx = event.x;
+      event.subject.fy = event.y;
     }
 
     function dragended() {
-      if (!d3.event.active) simulation.alphaTarget(0);
-      d3.event.subject.fx = null;
-      d3.event.subject.fy = null;
+      if (!event.active) simulation.alphaTarget(0);
+      event.subject.fx = null;
+      event.subject.fy = null;
     }
 
     function drawLink(d) {

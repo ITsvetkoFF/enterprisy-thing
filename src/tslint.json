@@ -12,6 +12,12 @@
             "element",
             "app",
             "kebab-case"
+        ],
+        "import-blacklist": [
+            true,
+            "d3",
+            "rxjs/Rx",
+            "rxjs/internal/operators"
         ]
     }
 }
