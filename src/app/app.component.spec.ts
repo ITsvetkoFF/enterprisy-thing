@@ -30,6 +30,9 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
+    /**
+     * This can actually substitute e2e tests! So no need in duplication.
+     */
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to enterpisy-thing!');
   });
 });

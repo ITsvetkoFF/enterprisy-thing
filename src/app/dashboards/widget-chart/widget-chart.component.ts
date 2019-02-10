@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ViewChild, ViewEncapsulation} from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 // import * as d3 from 'd3';
-import { forceSimulation, forceLink, forceCenter, forceManyBody} from 'd3-force';
+import { forceSimulation, forceLink, forceCenter, forceManyBody } from 'd3-force';
 import { select, event } from 'd3-selection';
 import { drag } from 'd3-drag';
 
@@ -35,38 +35,38 @@ export class WidgetChartComponent implements AfterViewInit {
       .force('charge', forceManyBody())
       .force('center', forceCenter(width / 2, height / 2));
 
-      simulation
-        .nodes(graph.nodes)
-        .on('tick', ticked);
+    simulation
+      .nodes(graph.nodes)
+      .on('tick', ticked);
 
     (simulation.force('link') as any).links(graph.links);
 
-      select(canvas)
-        .call(drag()
-          .container(canvas)
-          .subject(dragsubject)
-          .on('start', dragstarted)
-          .on('drag', dragged)
-          .on('end', dragended));
+    select(canvas)
+      .call(drag()
+        .container(canvas)
+        .subject(dragsubject)
+        .on('start', dragstarted)
+        .on('drag', dragged)
+        .on('end', dragended));
 
-      function ticked() {
-        context.clearRect(0, 0, width, height);
+    function ticked() {
+      context.clearRect(0, 0, width, height);
 
-        context.beginPath();
-        graph.links.forEach(drawLink);
-        context.strokeStyle = '#aaa';
-        context.stroke();
+      context.beginPath();
+      graph.links.forEach(drawLink);
+      context.strokeStyle = '#aaa';
+      context.stroke();
 
-        context.beginPath();
-        graph.nodes.forEach(drawNode);
-        context.fill();
-        context.strokeStyle = '#fff';
-        context.stroke();
-      }
+      context.beginPath();
+      graph.nodes.forEach(drawNode);
+      context.fill();
+      context.strokeStyle = '#fff';
+      context.stroke();
+    }
 
-      function dragsubject() {
-        return simulation.find(event.x, event.y);
-      }
+    function dragsubject() {
+      return simulation.find(event.x, event.y);
+    }
 
     function dragstarted() {
       if (!event.active) simulation.alphaTarget(0.3).restart();
