@@ -6,7 +6,7 @@ import {ProxyRouteComponent} from '../proxy-route.component';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class DashboardComponent implements OnInit {
 
